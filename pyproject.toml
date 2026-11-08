@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telegram-live-call"
+version = "0.1.0"
+description = "An owner-only Telegram voice-call bridge for AI assistants"
+readme = "README.md"
+requires-python = ">=3.13"
+license = "MIT"
+authors = [{name = "Fedor Molodtsov"}]
+dependencies = [
+  "py-tgcalls[telethon]==3.0.0",
+  "ntgcalls==3.0.6",
+  "telethon==1.45.0",
+  "aiohttp>=3.12,<4",
+  "python-dotenv>=1.1,<2",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10", "pytest-asyncio>=1,<2"]
+
+[project.scripts]
+telegram-live-call = "telegram_live_call.cli:main"
+
+[project.urls]
+Repository = "https://github.com/itsfedor/telegram-live-call"
+Issues = "https://github.com/itsfedor/telegram-live-call/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
